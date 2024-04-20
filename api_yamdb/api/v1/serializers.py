@@ -6,9 +6,9 @@ from django.utils import timezone
 
 from rest_framework import serializers
 
-from users.constants import EMAIL_MAX_LENGTH, USERNAME_MAX_LENGTH
 from api.v1.mixins import UsernameValidateMixin
 from reviews.models import Category, Comment, Genre, Review, Title
+from users.constants import EMAIL_MAX_LENGTH, USERNAME_MAX_LENGTH
 
 User = get_user_model()
 username_validator = UnicodeUsernameValidator()

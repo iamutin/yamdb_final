@@ -9,8 +9,8 @@ class IsAdmin(permissions.BasePermission):
 class IsAdminOrReadOnly(IsAdmin):
     def has_permission(self, request, view):
         return (
-                request.method in permissions.SAFE_METHODS or
-                super().has_permission(request, view)
+            request.method in permissions.SAFE_METHODS or
+            super().has_permission(request, view)
         )
 
 
@@ -18,6 +18,6 @@ class IsAuthorModeratorAdminOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         user = request.user
         return request.method in permissions.SAFE_METHODS or (
-                user.is_authenticated and
-                (obj.author == user or user.is_admin or user.is_moderator)
+            user.is_authenticated and
+            (obj.author == user or user.is_admin or user.is_moderator)
         )
